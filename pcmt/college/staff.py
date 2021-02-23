@@ -149,10 +149,10 @@ def create_staff(request):
                                 staff.is_BOC = False
                                 staff.is_teacher = True
                             elif request.POST.get('staff') == 'on':
-                                user.is_HOD = False
-                                user.is_BOC = False
-                                user.is_teacher = False
-                                user.is_staff = True
+                                staff.is_HOD = False
+                                staff.is_BOC = False
+                                staff.is_teacher = False
+                                staff.is_staff = True
                             else:
                                 msg = 'Staff option is not selected'
                                 color = 'danger'
@@ -167,11 +167,11 @@ def create_staff(request):
 
                             msg = 'successfully submitted'
                             color = 'success'
-                            return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+                            return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
                         except IntegrityError:
                             msg = 'Email already Exist'
                             color = 'danger'
-                            return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+                            return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
             else:
 
                 msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"

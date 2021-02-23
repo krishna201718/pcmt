@@ -50,6 +50,8 @@ class Account(AbstractBaseUser):
 
     last_login = models.DateTimeField(auto_now=True)
 
+    enrollment_no = models.CharField(max_length=20,default='')
+
     # user privileges
     is_approved = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
@@ -202,18 +204,13 @@ class Student(models.Model):
     end_date = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
-from django.core.exceptions import *
 
 class Admission(models.Model):
     def profile(instance, filename):
         upload_to = 'profile/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -221,11 +218,7 @@ class Admission(models.Model):
         upload_to = 'rank_card/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -233,23 +226,15 @@ class Admission(models.Model):
         upload_to = 'aadhar_card/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
     def admit_card(instance, filename):
-        upload_to = 'admit_card/'
+        upload_to = 'admit_card_entrance/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -257,23 +242,15 @@ class Admission(models.Model):
         upload_to = 'admit_card_10/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
     def image_marksheet_10(instance, filename):
         upload_to = 'marksheet_10/'
         ext = filename.split('.')[-1]
-        # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        # set filename as random string
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -281,11 +258,7 @@ class Admission(models.Model):
         upload_to = 'admit_card_12/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -293,11 +266,7 @@ class Admission(models.Model):
         upload_to = 'marksheet_12/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -305,11 +274,7 @@ class Admission(models.Model):
         upload_to = 'cast_certificate/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -317,11 +282,7 @@ class Admission(models.Model):
         upload_to = 'physically_certificate/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -329,11 +290,7 @@ class Admission(models.Model):
         upload_to = 'certificateDiploma/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -341,11 +298,7 @@ class Admission(models.Model):
         upload_to = 'marksheet_diploma/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -353,11 +306,7 @@ class Admission(models.Model):
         upload_to = 'qrCode/'
         ext = filename.split('.')[-1]
         # get filename
-        if instance.pk:
-            filename = '{}.{}'.format(instance.pk, ext)
-        else:
-            # set filename as random string
-            filename = '{}.{}'.format(uuid4().hex, ext)
+        filename = '{}.{}'.format(uuid4().hex, ext)
         # return the whole path to the file
         return os.path.join(upload_to, filename)
 
@@ -385,6 +334,12 @@ class Admission(models.Model):
     mothers_name =  models.CharField(max_length=255,default='')
     blood_group =  models.CharField(max_length=255,default='')
     mothers_tongue =  models.CharField(max_length=255,default='')
+
+    fathers_contact_no = models.CharField(max_length=255,default='')
+    fathers_email = models.EmailField(max_length=100,default='')
+    guardian_name = models.CharField(max_length=255, blank=True,default='')
+    guardian_contact_no = models.CharField(max_length=255, blank=True,default='')
+    relation_with_guardian = models.CharField(max_length=255, blank=True,default='')
 
     nationality = models.CharField(max_length=255, blank=True)
     cast = models.CharField(max_length=8)
@@ -429,7 +384,7 @@ class Admission(models.Model):
     sub5 = models.CharField(max_length=255, blank=True, default=0)
     aggregate10 = models.CharField(max_length=255,blank=True, default='')
 
-    admit10 = models.ImageField(upload_to=admit_card, max_length=255, null=True, blank=True)
+    admit10 = models.ImageField(upload_to=image_admit_card_10, max_length=255, null=True, blank=True)
     mark10 = models.ImageField(upload_to=image_marksheet_10, max_length=255, null=True, blank=True)
     certificate10 = models.ImageField(upload_to=image_marksheet_10, max_length=255, null=True, blank=True)
 
@@ -452,7 +407,7 @@ class Admission(models.Model):
     aggregate12 = models.CharField(max_length=255,blank=True, default='')
 
     mark12 = models.ImageField(upload_to=image_marksheet_12, max_length=255, null=True, blank=True)
-    admit12 = models.ImageField(upload_to=admit_card, max_length=255, null=True, blank=True)
+    admit12 = models.ImageField(upload_to=image_admit_card_12, max_length=255, null=True, blank=True)
     certificate12 = models.ImageField(upload_to=image_marksheet_12, max_length=255, null=True, blank=True)
 
     # diploma
@@ -474,23 +429,26 @@ class Admission(models.Model):
     certificateDiploma = models.ImageField(upload_to=image_certificateDiploma, max_length=255, null=True, blank=True)
 
     # others
-    loan = models.CharField(max_length=255,  blank=True, default=''),
+    loan = models.CharField(max_length=255,  blank=True, default='')
     hostel = models.CharField(max_length=255,  blank=True, default='')
+    gap = models.CharField(max_length=255, blank=True, default="")
+    reason = models.CharField(max_length=255,blank=True, default='')
 
-    recovery_email = models.EmailField(max_length=255, default="admin@pcmt-india.net")
 
     last_login = models.DateTimeField(auto_now=True)
     joined_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
 
-    def saveQrCode(self, *args, **kwargs):
-        qrcode_img = qrcode.make(self.enrollment_no)
+    def saveQrCode(self, enrollment_no=''):
+        qrcode_img = qrcode.make(enrollment_no)
         canvas = Image.new('RGB', (290, 290), 'white')
         canvas.paste(qrcode_img)
         draw = ImageDraw.Draw(canvas)
-        draw.text((45, 250), self.enrollment_no, fill=(0, 0, 0),
-                  font=ImageFont.truetype('assets/college/fonts/RobotoMono-VariableFont_wght.ttf', 22), align="center")
-        fname = f'qr_code-{self.enrollment_no}.png'
+        draw.text((45, 250), self.enrollment_no, fill=(0, 0, 0),font=ImageFont.truetype('assets/RobotoMono'
+                                                                                        '-VariableFont_wght.ttf',
+                                                                                        22), align="center")
+
+        fname = f'qr_code-{enrollment_no}.png'
         buffer = BytesIO()
         canvas.save(buffer, 'PNG')
         self.qr_code.save(fname, File(buffer), save=False)

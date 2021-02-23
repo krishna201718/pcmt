@@ -60,6 +60,10 @@ body, html {
             </div>
         </div>
         <!-- end staff  user information-->
+
+
+
+
         <!-- sidebar-header  -->
         <div class="sidebar-search">
             <div>
@@ -79,7 +83,34 @@ body, html {
                 <li class="header-menu">
                     <span>General</span>
                 </li>
+{% if request.user.is_staff %}
+<li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-user-circle"></i>
+                        <span>Admission</span>
+                        <span class="badge badge-pill badge-warning">New</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+
+                            <li>
+                                <a href="{%url 'college:studentsRegistration' %}">Registration
+                                    <span class="badge badge-pill badge-success">Pro</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Edit Student information</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'college:admission_data' %}">View Student information</a>
+                            </li>
+                        </ul>
+<!-- End Student registration-->
+{%else%}
+<!-- Start Student Attendance-->
+
 <!-- start Student registration-->
+
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-user-circle"></i>
@@ -88,7 +119,7 @@ body, html {
                     </a>
                     <div class="sidebar-submenu">
                         <ul>
-                          {%if request.user.is_student%}
+                          {%if request.user.is_student or request.user.is_admin%}
                             <li>
                                 <a href="{%url 'college:studentsRegistration' %}">Registration
                                     <span class="badge badge-pill badge-success">Pro</span>
@@ -105,6 +136,7 @@ body, html {
 <!-- End Student registration-->
 
 <!-- Start Student Attendance-->
+
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-university"></i>
@@ -288,7 +320,9 @@ body, html {
                     </a>
                 </li>
             </ul>
+            {%endif%}
         </div>
+
         <!-- sidebar-menu  -->
     </div>
 

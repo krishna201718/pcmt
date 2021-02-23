@@ -9,6 +9,9 @@ app_name = 'college'
 urlpatterns = [
     # common view
     path('', views.index, name='index'),
+
+    path('admission_data', views.admission_data, name='admission_data'),
+
     path('home_student', views.home_student, name='home_student'),
     path('home_staff', views.home_staff, name='home_staff'),
     path('home_general', views.home_general, name='home_general'),
@@ -54,6 +57,7 @@ urlpatterns = [
     path('load_semester', staff.load_semester, name='load_semester'),
 
     # print
+    path('export_admission_pdf/<email>', views.export_admission_pdf, name='export_admission_pdf'),
     path('export_pdf/<id>', views.export_pdf, name='export_pdf'),
     path('export_student_data_pdf', views.export_student_data_pdf, name='export_student_data_pdf'),
 ]

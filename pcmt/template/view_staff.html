@@ -191,6 +191,8 @@
                                          {%else%}
                                             <td data-title="Department" >Teacher </td>
                                         {%endif%}
+                                {%elif person.is_staff%}
+                                                            <td data-title="Department" style="color: red;">Staff</td>
                                 {%endif%}
                                 <td data-title="Date of Joining" style="display: none;">{{person.year}}</td>
                                 <td data-title="" style="display: block;">
