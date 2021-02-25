@@ -176,7 +176,7 @@
                             <!-- Card Header -->
                             <div class="card-header pmd-card-border d-flex flex-row align-items-center">
                                 <a  href="javascript:void(0);">
-                                    <img src="../media/{{person.image}}" width="60" height="60" alt="Profile Picture" class="rounded-circle">
+                                    <img src="{{person.photo.url}}" width="60" height="60" alt="Profile Picture" class="rounded-circle">
                                 </a>
 
                                 <div class="media-body">
@@ -272,7 +272,7 @@
                         <tr role="row"  >
                                 <td data-title="Name" style="">
                                     <div class="d-flex align-items-center">
-                                        <img src="../media/{{person.image}}" alt="Profile Picture" class="rounded-circle mr-3" width="60" height="60">
+                                        <img src="{{person.photo.url}}" alt="Profile Picture" class="rounded-circle mr-3" width="60" height="60">
                                             <div class="media-body">
                                                 {{person.first_name}} {{person.last_name}}
                                         </div>
@@ -294,7 +294,7 @@
                                 <td data-title="" style="display: block;">
                                     <a href="{%url 'college:profile' person.id %}" class="btn pmd-btn-fab pmd-btn-flat btn-primary pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">visibility</i></a>
                                     <a href="#" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">edit</i></a>
-                                    <a href="{%url 'college:export_pdf' person.id %}" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">download</i></a>
+                                    <a href="{%url 'college:export_pdf' person.email %}" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">download</i></a>
 <!--                                    <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>-->
                                 </td>
 

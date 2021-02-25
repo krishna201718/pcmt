@@ -639,7 +639,7 @@ textarea.form-control {
                 <div class="profile-status">
                     <i class="fa fa-check-circle"></i> Online
                 </div>
-                <img src="../media/{{users.image}}" alt="" class="profile-img img-responsive center-block">
+                <img src="{{users.photo.url}}" alt="" class="profile-img img-responsive center-block">
                 <div class="profile-label">
                     {%if users.is_student%}
                         <span class="label label-danger">Student</span>
@@ -665,7 +665,7 @@ textarea.form-control {
                     <ul class="fa-ul">
                         <li><i class="fa-li fa fa-user"></i>Gender: <span>{{users.gender}}</span></li>
                         <li><i class="fa-li fa fa-graduation-cap"></i>Departmen: <span>{{users.department}}</span></li>
-                        {%if users.is_student%}
+                        {%if request.user.is_student%}
                             {%if users.semester >= 1  and users.semester <= 2 %}
                             <li><i class="fa-li fa fa-rocket"></i>year: <span> 1<sup>st </sup> year</span></li>
                             {%elif users.semester >= 3   and users.semester <= 4 %}
@@ -710,7 +710,7 @@ textarea.form-control {
 <!--mobile-->
                     <div class="row">
                       <div class="col-sm-3"><h6 class="mb-0">Mobile no</h6></div>
-                      <div class="col-sm-9 text-secondary"> {{users.phone}}</div>
+                      <div class="col-sm-9 text-secondary"> {{users.contact_no}}</div>
                     </div>
                     <hr>
 <!--University Registration No -->
@@ -735,7 +735,7 @@ textarea.form-control {
 <!--address-->
                     <div class="row mb-5">
                       <div class="col-sm-3"><h6 class="mb-0">Address</h6></div>
-                      <div class="col-sm-9 text-secondary"> {{users.address}}</div>
+                      <div class="col-sm-9 text-secondary"> {{users.address}} {{users.city}} {{users.state}} {{users.country}}</div>
                     </div>
 
                       <div >

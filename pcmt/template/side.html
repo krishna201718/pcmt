@@ -83,7 +83,7 @@ body, html {
                 <li class="header-menu">
                     <span>General</span>
                 </li>
-{% if request.user.is_staff %}
+{% if request.user.is_staff and not request.user.is_admin%}
 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-user-circle"></i>
@@ -119,7 +119,7 @@ body, html {
                     </a>
                     <div class="sidebar-submenu">
                         <ul>
-                          {%if request.user.is_student or request.user.is_admin%}
+                          {%if  request.user.is_admin%}
                             <li>
                                 <a href="{%url 'college:studentsRegistration' %}">Registration
                                     <span class="badge badge-pill badge-success">Pro</span>
@@ -308,7 +308,7 @@ body, html {
                     </a>
                 </li>
                 <li>
-                    <a href="{%url 'college:profile' request.user.id %}">
+                    <a href="">
                         <i class="fa fa-calendar"></i>
                         <span>Profile</span>
                     </a>

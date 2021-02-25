@@ -53,20 +53,20 @@ def create_staff(request):
         if password != password_confirm:
             msg = "password does not match"
             color = 'danger'
-            return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+            return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
 
         else:
             if len(password) >= 8:
                 if password.isdigit():
                     msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"
                     color = 'danger'
-                    return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+                    return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
 
                 else:
                     if password.isalpha():
                         msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"
                         color = 'danger'
-                        return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+                        return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
                     else:
 
                         try:
@@ -156,7 +156,7 @@ def create_staff(request):
                             else:
                                 msg = 'Staff option is not selected'
                                 color = 'danger'
-                                return render(request, "create_staff.html", context={'msg': msg, 'color': color})
+                                return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
 
                             if request.POST.get('gender') == 1:
                                 staff.gender = request.POST.get("gender")

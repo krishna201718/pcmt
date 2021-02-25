@@ -120,7 +120,7 @@ def login(request):
                 request.session['active'] = usr.active
                 request.session['first_name'] = usr.first_name
                 request.session['last_name'] = usr.last_name
-            if request.user.is_staff:
+            if request.user.is_staff and not request.user.is_admin:
                 usr = Staff.object.get(email=email)
                 request.session['email'] = email
                 request.session['department'] = usr.department
@@ -128,9 +128,23 @@ def login(request):
                 request.session['active'] = usr.active
                 request.session['first_name'] = usr.first_name
                 request.session['last_name'] = usr.last_name
+                return redirect('college:admission_data')
             elif request.user.is_teacher:
+                usr = Staff.object.get(email=email)
+                request.session['email'] = email
+                request.session['department'] = usr.department
+                request.session['image'] = usr.image.url
+                request.session['active'] = usr.active
+                request.session['first_name'] = usr.first_name
+                request.session['last_name'] = usr.last_name
                 return redirect('college:home_staff')
             elif request.user.is_student:
+                usr = Student.objects.get(email=email)
+                request.session['email'] = email
+                request.session['department'] = usr.department
+                request.session['image'] = usr.photo.url
+                request.session['first_name'] = usr.first_name
+                request.session['last_name'] = usr.last_name
                 return redirect('college:home_student')
             else:
                 return redirect('college:student_data_view')
@@ -156,7 +170,7 @@ from django.db import IntegrityError
 
 
 def profile(request, id):
-    user = Account.object.get(id=id)
+    user = Student.objects.get(id=id)
     if request.POST:
         return HttpResponse("<h1> greate </h1>")
     return render(request, "profile.html", {'users': user})
@@ -226,11 +240,11 @@ def export_student_data_pdf(request):
             return response
 
 
-def export_pdf(request, id):
-    user = Account.object.get(id=id)
+def export_pdf(request, email):
+    user = Student.objects.get(email=email)
 
     template_path = 'export_pdf.html'
-    context = {'users': user}
+    context = {'user': user}
 
     response = render_to_pdf(template_path, context, name=(user.first_name + user.last_name))
     return response
@@ -822,17 +836,15 @@ def new_enrollment(request):
                 color = 'danger'
                 return render(request, 'new_enrollment.html', {'msg': msg, 'color': color})
 
-
     return render(request, 'new_enrollment.html')
+
 def export_admission_pdf(request, email):
     user = Admission.objects.get(email=email)
-    if user.school_name_diploma:
-        print('True')
-    else:
-        print('False')
+    year = datetime.datetime.today().year
+    print(year)
 
     template_path = 'export_admission_pdf.html'
-    context = {'users': user}
+    context = {'user': user,'year':year}
 
     response = render_to_pdf(template_path, context, name=(user.first_name + user.last_name))
     return response
@@ -840,5 +852,142 @@ def export_admission_pdf(request, email):
     return render(request, 'pdf_output.html', {'users': user})
 
 def admission_data(request):
-    user = Admission.objects.filter()
+    user = Admission.objects.all()
+    if request.POST:
+        add_user = Account.object.get(email = request.POST.get('email'))
+        request.session['student_email'] = request.POST.get('email')
+        admission_user = Admission.objects.get(email= request.session['student_email'])
+
+        user = Student()
+        user.semester = 1
+        user.year = admission_user.year
+        user.student_data = add_user
+        user.enrollment_no = add_user.enrollment_no
+        user.email = add_user.email
+        user.contact_no = admission_user.contact_no
+
+        user.first_name = admission_user.first_name
+        user.last_name = admission_user.last_name
+        user.dob = admission_user.dob
+        user.gender = admission_user.gender
+
+        user.address = admission_user.address
+        user.city = admission_user.city
+        user.state = admission_user.state
+        user.country = admission_user.country
+
+        user.fathers_name = admission_user.fathers_name
+        user.mothers_name = admission_user.mothers_name
+        user.blood_group = admission_user.blood_group
+        user.mothers_tongue = admission_user.mothers_tongue
+
+        user.fathers_contact_no = admission_user.fathers_contact_no
+        user.guardian_name = admission_user.guardian_name
+        user.guardian_contact_no = admission_user.guardian_contact_no
+        user.relation_with_guardian = admission_user.relation_with_guardian
+
+        user.nationality = admission_user.nationality
+        user.cast = admission_user.cast
+        user.religion = admission_user.religion
+        user.physically_challenge = admission_user.physically_challenge
+
+        user.department = admission_user.department
+        user.aadhar_card_no = admission_user.aadhar_card_no
+        # user.save()
+
+        user.physically_certificate = admission_user.physically_certificate
+        user.cast_certificate = admission_user.cast_certificate
+        user.photo = admission_user.photo
+        user.aadhar_card = admission_user.aadhar_card
+
+        user.saveQrCode(enrollment_no=add_user.enrollment_no)
+
+        # user = Student.objects.get(email=request.session['student_email'])
+        user.admission_cat = admission_user.admission_cat
+        user.conducted_by = admission_user.conducted_by
+        user.rank = admission_user.rank
+        user.roll_no = admission_user.roll_no
+
+        user.allotment = admission_user.allotment
+        user.admit_card = admission_user.admit_card
+        user.rank_card = admission_user.rank_card
+        user.roll_no = admission_user.roll_no
+        # user.save()
+
+        # user = Student.objects.get(email=request.session['student_email'])
+        user.school_name_10 = admission_user.school_name_10
+        user.board_10 = admission_user.board_10
+        user.medium_10 = admission_user.medium_10
+
+        user.address10 = admission_user.address10
+        user.city10 = admission_user.city10
+        user.state10 = admission_user.state10
+        user.country10 = admission_user.country10
+        user.passing_year_10 = admission_user.passing_year_10
+
+        user.sub1 = admission_user.sub1
+        user.sub2 = admission_user.sub2
+        user.sub3 = admission_user.sub3
+        user.sub4 = admission_user.sub4
+        user.sub5 = admission_user.sub5
+        user.aggregate10 = admission_user.aggregate10
+
+        user.mark10 = admission_user.mark10
+        user.admit10 = admission_user.admit10
+        user.certificate10 = admission_user.certificate10
+        # user.save()
+
+        # user = Student.objects.get(email=request.session['student_email'])
+        user.school_name_12 = admission_user.school_name_12
+        user.board_12 = admission_user.board_12
+        user.medium_12 = admission_user.medium_12
+
+        user.address12 = admission_user.address12
+        user.city12 = admission_user.city12
+        user.state12 = admission_user.state12
+        user.country12 = admission_user.country12
+        user.passing_year_12 = admission_user.passing_year_12
+
+        user.english = admission_user.english
+        user.chemistry = admission_user.chemistry
+        user.physics = admission_user.physics
+        user.math = admission_user.math
+        user.optional = admission_user.optional
+        user.aggregate12 = admission_user.aggregate12
+
+        user.mark12 =  admission_user.mark12
+        user.admit12 = admission_user.admit12
+        user.certificate12 = admission_user.certificate12
+        # user.save()
+
+        # user = Student.objects.get(email=request.session['student_email'])
+        user.school_name_diploma = admission_user.school_name_diploma
+        user.board_diploma = admission_user.board_diploma
+        user.medium_diploma = admission_user.medium_diploma
+
+        user.addressDiploma = admission_user.addressDiploma
+        user.cityDiploma = admission_user.cityDiploma
+        user.stateDiploma = admission_user.stateDiploma
+        user.countryDiploma = admission_user.countryDiploma
+        user.passing_year_Diploma = admission_user.passing_year_Diploma
+
+        user.marksDiploma = admission_user.marksDiploma
+        user.aggregateDiploma = admission_user.aggregateDiploma
+        user.division = admission_user.division
+        user.markDiploma = admission_user.markDiploma
+        user.certificateDiploma = admission_user.certificateDiploma
+        # user.save()
+
+        # user = Student.objects.get(email=request.session['student_email'])
+        user.loan = user.loan
+        user.gap = user.gap
+        user.reason = user.reason
+        user.hostel = user.hostel
+        user.save()
+        add_user.is_approved = True
+        add_user.save()
+
+        new_student = Admission.objects.all()
+        return render(request, 'admission_data.html', {'user': new_student, 'YEAR': YEARS})
+
     return render(request,'admission_data.html',{'user':user,'YEAR':YEARS})
