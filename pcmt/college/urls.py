@@ -58,7 +58,7 @@ urlpatterns = [
 
     # print
     path('export_admission_pdf/<email>', views.export_admission_pdf, name='export_admission_pdf'),
-    path('export_pdf/<id>', views.export_pdf, name='export_pdf'),
+    path('export_pdf/<email>', views.export_pdf, name='export_pdf'),
     path('export_student_data_pdf', views.export_student_data_pdf, name='export_student_data_pdf'),
 ]
 

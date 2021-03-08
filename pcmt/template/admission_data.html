@@ -165,78 +165,80 @@
             <div role="tabpanel" class="tab-pane" id="gridView">
                 <div class="row">
                     {%for person in user%}
-                    <div class="col-md-6 col-xl-4 col-12">
-                        <!-- Card Component -->
-                        <div class="card pmd-card user-info-card">
-                            <!-- Card Header -->
-                            <div class="card-header pmd-card-border d-flex flex-row align-items-center">
-                                <a  href="javascript:void(0);">
-                                    <img src="{{person.photo.url}}" width="60" height="60" alt="Profile Picture" class="rounded-circle">
-                                </a>
+                        {%if not person.student_data.is_approved%}
+                            <div class="col-md-6 col-xl-4 col-12">
+                            <!-- Card Component -->
+                            <div class="card pmd-card user-info-card">
+                                <!-- Card Header -->
+                                <div class="card-header pmd-card-border d-flex flex-row align-items-center">
+                                    <a  href="javascript:void(0);">
+                                        <img src="{{person.photo.url}}" width="60" height="60" alt="Profile Picture" class="rounded-circle">
+                                    </a>
 
-                                <div class="media-body">
-                                    <h3 class="card-title pl-3">{{person.first_name}} {{person.last_name}}</h3>
-                                    <p class="card-subtitle pl-3">{{person.department}}</p>
-                                </div>
-                                <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
-                                    <a href="javascript:void(0);" class="pmd-btn-fab btn-dark pmd-btn-flat btn btn-sm" data-toggle="dropdown" aria-expanded="true"><i class="material-icons pmd-icon-sm">more_vert</i></a>
-                                    <div class="dropdown-menu dropdown-menu-right" style="clip: rect(0px, 117.484px, 0px, 117.484px); transform: translate3d(-77.484px, 0px, 0px);">
-                                        <a class="dropdown-item d-flex flex-row align-items-center" href="employee-detail.html"><i class="material-icons md-dark pmd-icon-sm mr-3">edit</i><span class="media-body">Edit</span></a>
-                                        <a href="javascript:void(0);" title="Delete" class="dropdown-item d-flex flex-row align-items-center" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons md-dark pmd-icon-sm mr-3">delete</i><span class="media-body">Delete</span></a>
+                                    <div class="media-body">
+                                        <h3 class="card-title pl-3">{{person.first_name}} {{person.last_name}}</h3>
+                                        <p class="card-subtitle pl-3">{{person.department}}</p>
                                     </div>
+                                    <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+                                        <a href="javascript:void(0);" class="pmd-btn-fab btn-dark pmd-btn-flat btn btn-sm" data-toggle="dropdown" aria-expanded="true"><i class="material-icons pmd-icon-sm">more_vert</i></a>
+                                        <div class="dropdown-menu dropdown-menu-right" style="clip: rect(0px, 117.484px, 0px, 117.484px); transform: translate3d(-77.484px, 0px, 0px);">
+                                            <a class="dropdown-item d-flex flex-row align-items-center" href="employee-detail.html"><i class="material-icons md-dark pmd-icon-sm mr-3">edit</i><span class="media-body">Edit</span></a>
+                                            <a href="javascript:void(0);" title="Delete" class="dropdown-item d-flex flex-row align-items-center" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons md-dark pmd-icon-sm mr-3">delete</i><span class="media-body">Delete</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- List Group Component -->
+                                <ul class="list-group pmd-list">
+                                    <li class="list-group-item d-flex flex-row">
+                                        <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">person_outline</i>
+                                        <div class="media-body">
+                                            <label class="pmd-list-subtitle">Enrollment no</label>
+                                            <p class="pmd-list-title">{{person.enrollment_no}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-row">
+                                        <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">call</i>
+                                        <div class="media-body">
+                                            <label class="pmd-list-subtitle mb-0">Phone No.</label>
+                                            <p class="pmd-list-title">+91 {{person.contact_no}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-row">
+                                        <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">mail_outline</i>
+                                        <div class="media-body">
+                                            <label class="pmd-list-subtitle">Email Address</label>
+                                            <p class="pmd-list-title"><a href="mailto:{{persion.email}}">{{person.email}}</a></p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-row">
+                                        <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">people_outline</i>
+                                        <div class="media-body">
+                                            <label class="pmd-list-subtitle">Department</label>
+                                            {% if user.person.department == 1 %}
+                                                <p class="pmd-list-title">Computer Science and Engineering</p>
+                                            {%else%}
+                                            <p class="pmd-list-title">{{person.department}}</p>
+                                            {%endif%}
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-row">
+                                        <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">today</i>
+                                        <div class="media-body">
+                                            <label class="pmd-list-subtitle">Registration year</label>
+                                            <p class="pmd-list-title">{{person.year}}</p>
+                                        </div>
+                                    </li>
+                                </ul><!-- List Group Component End -->
+
+                                <!-- Card Footer -->
+                                <div class="card-footer pmd-card-border">
+                                    <a title="View More" href="{%url 'college:profile' person.id %}" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">View More</a>
                                 </div>
                             </div>
-
-                            <!-- List Group Component -->
-                            <ul class="list-group pmd-list">
-                                <li class="list-group-item d-flex flex-row">
-                                    <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">person_outline</i>
-                                    <div class="media-body">
-                                        <label class="pmd-list-subtitle">Enrollment no</label>
-                                        <p class="pmd-list-title">{{person.enrollment_no}}</p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex flex-row">
-                                    <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">call</i>
-                                    <div class="media-body">
-                                        <label class="pmd-list-subtitle mb-0">Phone No.</label>
-                                        <p class="pmd-list-title">+91 {{person.contact_no}}</p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex flex-row">
-                                    <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">mail_outline</i>
-                                    <div class="media-body">
-                                        <label class="pmd-list-subtitle">Email Address</label>
-                                        <p class="pmd-list-title"><a href="mailto:{{persion.email}}">{{person.email}}</a></p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex flex-row">
-                                    <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">people_outline</i>
-                                    <div class="media-body">
-                                        <label class="pmd-list-subtitle">Department</label>
-                                        {% if user.person.department == 1 %}
-                                            <p class="pmd-list-title">Computer Science and Engineering</p>
-                                        {%else%}
-                                        <p class="pmd-list-title">{{person.department}}</p>
-                                        {%endif%}
-                                    </div>
-                                </li>
-                                <li class="list-group-item d-flex flex-row">
-                                    <i class="material-icons pmd-list-icon align-self-center pmd-md md-dark">today</i>
-                                    <div class="media-body">
-                                        <label class="pmd-list-subtitle">Registration year</label>
-                                        <p class="pmd-list-title">{{person.year}}</p>
-                                    </div>
-                                </li>
-                            </ul><!-- List Group Component End -->
-
-                            <!-- Card Footer -->
-                            <div class="card-footer pmd-card-border">
-                                <a title="View More" href="{%url 'college:profile' person.id %}" class="btn pmd-btn-flat pmd-ripple-effect btn-primary">View More</a>
-                            </div>
+                            <!-- Card Component End -->
                         </div>
-                        <!-- Card Component End -->
-                    </div>
+                        {%endif%}
                     {%endfor%}
                     <div class="col-12 text-center">
                         <button class="btn btn-secondary pmd-ripple-effect">Load More</button>
@@ -265,7 +267,8 @@
                         </thead>
                         <tbody>
                         {%for person in user%}
-                        <tr role="row"  >
+                           {%if not person.student_data.is_approved%}
+                                <tr role="row"  >
                                 <td data-title="Name" style="">
                                     <div class="d-flex align-items-center">
                                         <img src="{{person.photo.url}}" alt="Profile Picture" class="rounded-circle mr-3" width="60" height="60">
@@ -291,11 +294,17 @@
 <!--                                    <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>-->
                                 </td>
                             <td data-title="" >
-                                    <a href="{%url 'college:export_admission_pdf' person.email %}" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">done</i></a>
+                                <form  method="post">
+                                    {%csrf_token%}
+                                    <input type="hidden" name="email" value="{{person.email}}">
+                                    <button type="submit" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">done</i></button>
+                                </form>
+
 <!--                                    <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>-->
                                 </td>
 
                             </tr>
+                           {%endif%}
                         {%endfor%}
 
                         </tbody>
