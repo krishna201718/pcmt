@@ -53,35 +53,59 @@ def create_staff(request):
         if password != password_confirm:
             msg = "password does not match"
             color = 'danger'
+<<<<<<< HEAD
             return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
+=======
+            return render(request, "create_staff.html", context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
 
         else:
             if len(password) >= 8:
                 if password.isdigit():
                     msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"
                     color = 'danger'
+<<<<<<< HEAD
                     return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
+=======
+                    return render(request, "create_staff.html", context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
 
                 else:
                     if password.isalpha():
                         msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"
                         color = 'danger'
+<<<<<<< HEAD
                         return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
+=======
+                        return render(request, "create_staff.html",
+                                      context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
                     else:
 
                         try:
 
                             user = Account()
+<<<<<<< HEAD
                             if request.POST.get('hod') == 'on' and request.POST.get('boc') == 'on' and request.POST.get('teacher') == 'on':
+=======
+                            if request.POST.get('hod') == 'on' and request.POST.get('boc') == 'on' and request.POST.get(
+                                    'teacher') == 'on':
+>>>>>>> First commit
                                 user.is_HOD = True
                                 user.is_BOC = True
                                 user.is_teacher = True
 
+<<<<<<< HEAD
                             elif request.POST.get('hod') is None and request.POST.get('boc') == 'on' and request.POST.get('teacher') == 'on':
+=======
+                            elif request.POST.get('hod') is None and request.POST.get(
+                                    'boc') == 'on' and request.POST.get('teacher') == 'on':
+>>>>>>> First commit
                                 user.is_HOD = False
                                 user.is_BOC = True
                                 user.is_teacher = True
 
+<<<<<<< HEAD
                             elif request.POST.get('hod') is None and request.POST.get('boc') is None and request.POST.get('teacher') == 'on':
                                 user.is_HOD = False
                                 user.is_BOC = False
@@ -91,6 +115,21 @@ def create_staff(request):
                                 user.is_BOC = True
                                 user.is_teacher = None
                             elif request.POST.get('hod') == 'on' and request.POST.get('boc') is None and request.POST.get('teacher') == 'on':
+=======
+
+                            elif request.POST.get('hod') is None and request.POST.get(
+                                    'boc') is None and request.POST.get('teacher') == 'on':
+                                user.is_HOD = False
+                                user.is_BOC = False
+                                user.is_teacher = True
+                            elif request.POST.get('hod') == 'on' and request.POST.get(
+                                    'boc') == 'on' and request.POST.get('teacher') is None:
+                                user.is_HOD = True
+                                user.is_BOC = True
+                                user.is_teacher = None
+                            elif request.POST.get('hod') == 'on' and request.POST.get(
+                                    'boc') is None and request.POST.get('teacher') == 'on':
+>>>>>>> First commit
                                 user.is_HOD = True
                                 user.is_BOC = False
                                 user.is_teacher = True
@@ -126,12 +165,20 @@ def create_staff(request):
                                 staff.is_HOD = True
                                 staff.is_BOC = True
                                 staff.is_teacher = True
+<<<<<<< HEAD
+=======
+                                staff.year = str(datetime.datetime.today().year)
+>>>>>>> First commit
 
                             elif request.POST.get('hod') is None and request.POST.get(
                                     'boc') == 'on' and request.POST.get('teacher') == 'on':
                                 staff.is_HOD = False
                                 staff.is_BOC = True
                                 staff.is_teacher = True
+<<<<<<< HEAD
+=======
+                                staff.year = str(datetime.datetime.today().year)
+>>>>>>> First commit
 
                             elif request.POST.get('hod') is None and request.POST.get(
                                     'boc') is None and request.POST.get('teacher') == 'on':
@@ -142,6 +189,10 @@ def create_staff(request):
                                     'boc') == 'on' and request.POST.get('teacher') is None:
                                 staff.is_HOD = True
                                 staff.is_BOC = True
+<<<<<<< HEAD
+=======
+                                staff.year = str(datetime.datetime.today().year)
+>>>>>>> First commit
                                 staff.is_teacher = None
                             elif request.POST.get('hod') == 'on' and request.POST.get(
                                     'boc') is None and request.POST.get('teacher') == 'on':
@@ -156,7 +207,12 @@ def create_staff(request):
                             else:
                                 msg = 'Staff option is not selected'
                                 color = 'danger'
+<<<<<<< HEAD
                                 return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
+=======
+                                return render(request, "create_staff.html",
+                                              context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
 
                             if request.POST.get('gender') == 1:
                                 staff.gender = request.POST.get("gender")
@@ -167,11 +223,21 @@ def create_staff(request):
 
                             msg = 'successfully submitted'
                             color = 'success'
+<<<<<<< HEAD
                             return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
                         except IntegrityError:
                             msg = 'Email already Exist'
                             color = 'danger'
                             return render(request, "create_staff.html", context={'msg': msg, 'color': color,'years': YEARS})
+=======
+                            return render(request, "create_staff.html",
+                                          context={'msg': msg, 'color': color, 'years': YEARS})
+                        except IntegrityError:
+                            msg = 'Email already Exist'
+                            color = 'danger'
+                            return render(request, "create_staff.html",
+                                          context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
             else:
 
                 msg = "password should atleaset 8 charactor and combination with alphanumberic charactor"
@@ -181,6 +247,13 @@ def create_staff(request):
     return render(request, "create_staff.html", {'years': YEARS})
 
 
+<<<<<<< HEAD
+=======
+def edit_staff(request):
+    return render(request, 'edit_staff.html')
+
+
+>>>>>>> First commit
 def attendance_view(request):
     if request.POST:
         return HttpResponse("<h1> greate </h1>")
@@ -193,6 +266,7 @@ def view_staff(request):
 
     if request.user.is_HOD:
         user = Staff.object.filter(is_teacher=True, department=request.session['department'])
+<<<<<<< HEAD
         return render(request, "view_staff.html", context={'user': user})
     elif request.user.is_admin:
         user = Staff.object.filter()
@@ -202,6 +276,17 @@ def view_staff(request):
     elif request.user.is_teacher:
         user = Staff.object.filter(id=request.user.id)
         return render(request, "view_staff.html", context={'user': user})
+=======
+        return render(request, "view_staff.html", context={'user': user, 'YEARS': YEARS})
+    elif request.user.is_admin:
+        user = Staff.object.filter()
+
+        return render(request, "view_staff.html", context={'user': user, 'YEARS': YEARS})
+
+    elif request.user.is_teacher:
+        user = Staff.object.filter(id=request.user.id)
+        return render(request, "view_staff.html", context={'user': user, 'YEARS': YEARS})
+>>>>>>> First commit
 
 
 def subject_assign(request):
@@ -228,11 +313,14 @@ def subject_assign(request):
     return render(request, "subject_assign.html", {'teacher': teacher, 'years': YEARS})
 
 
+<<<<<<< HEAD
 #  obj.image_field
 #  obj.image_field.url
 #  obj.image_field.path
 
 
+=======
+>>>>>>> First commit
 def create_subject(request):
     if request.POST:
         user = Staff.object.get(email=request.user.email, is_HOD=request.user.is_HOD, )
@@ -252,17 +340,26 @@ def create_subject(request):
             subject.save()
             msg = 'Created Succesfully'
             color = 'success'
+<<<<<<< HEAD
             return render(request, "create_subject.html", context={'msg': msg, 'color': color})
         except:
             msg = 'Subject already exist'
             color = 'danger'
             return render(request, "create_subject.html", context={'msg': msg, 'color': color})
+=======
+            return render(request, "create_subject.html", context={'msg': msg, 'color': color, 'years': YEARS})
+        except:
+            msg = 'Subject already exist'
+            color = 'danger'
+            return render(request, "create_subject.html", context={'msg': msg, 'color': color, 'years': YEARS})
+>>>>>>> First commit
 
     return render(request, "create_subject.html", {'years': YEARS})
 
 
 # ajax view
 def view_subjects(request):
+<<<<<<< HEAD
     staff_obj = Staff.object.get(email=request.user.email)
     if request.POST:
         return HttpResponse("<h1> greate </h1>")
@@ -281,6 +378,33 @@ def view_subjects(request):
     elif request.user.is_teacher:
         subject = Subject.objects.filter(teacher=staff_obj.id)
         return render(request, "view_subjects.html", context={'Subjects': subject})
+=======
+    if request.POST:
+        if request.user.is_HOD:
+            subject = Subject.objects.filter(semester=request.POST.get('go_semester'), year=request.POST.get('go_year'))
+            return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+        elif request.user.is_admin:
+            subject = Subject.objects.filter(semester=request.POST.get('go_semester'), year=request.POST.get('go_year'))
+            return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+
+        elif request.user.is_BOC:
+            staff_obj = Staff.object.get(email=request.user.email, )
+            subject = Subject.objects.filter(teacher=staff_obj.id, semester=request.POST.get('go_semester'),
+                                             year=request.POST.get('go_year'))
+            return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+
+        elif request.user.is_teacher:
+            staff_obj = Staff.object.get(email=request.user.email)
+            subject = Subject.objects.filter(teacher=staff_obj.id, semester=request.POST.get('go_semester'),
+                                             year=request.POST.get('go_year'))
+            return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+        elif request.user.is_student:
+            subject = Subject.objects.filter(department=request.session['department'],
+                                             semester=request.POST.get('go_semester'), year=request.POST.get('go_year'))
+            return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+    subject = {}
+    return render(request, "view_subjects.html", context={'Subjects': subject, 'YEARS': YEARS})
+>>>>>>> First commit
 
 
 from .models import Question, Result, ExamData
@@ -388,6 +512,7 @@ def add_question(request):
                                                subject=get_subject).total_question
 
         try:
+<<<<<<< HEAD
                 if Question.objects.filter(semester=sem, exam=exam_type, subject=get_subject.id,
                                            teacher=user.id).count() <= total_questions-1:
                     num = Question.objects.filter(semester=sem, exam=exam_type,subject=get_subject.id).count()
@@ -436,18 +561,84 @@ def add_question(request):
                     return render(request, 'add_question.html',
                                   {'question_no': 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
                                    'sem_list': sem_list})
+=======
+            if Question.objects.filter(semester=sem, exam=exam_type, subject=get_subject.id,
+                                       teacher=user.id).count() <= total_questions - 1:
+                num = Question.objects.filter(semester=sem, exam=exam_type, subject=get_subject.id).count()
+
+                question_obj = Question()
+                question_obj.question_text = question
+                question_obj.subject = get_subject
+                question_obj.exam = exam_type
+                question_obj.teacher = user
+                question_obj.semester = sem
+                question_obj.question_no = (num + 1)
+
+                # adding choice Corrosponding with answer
+                question_obj.choice_text1 = choice_1
+                question_obj.choice_text2 = choice_2
+                question_obj.choice_text3 = choice_3
+                question_obj.choice_text4 = choice_4
+                question_obj.correct = correct_choice
+                question_obj.save()
+                msg = 'Next question'
+                color = 'success'
+                if (num +1) <= total_questions - 1:
+                    return render(request, 'add_question.html',
+                                  {'question_no': num + 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
+                                   'sem_list': sem_list})
+>>>>>>> First commit
                 else:
                     msg = 'All question done thank you'
                     color = 'danger'
                     return render(request, 'add_question.html',
                                   {'question_no': 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
                                    'sem_list': sem_list})
+<<<<<<< HEAD
         except:
                 msg = 'Try to fill all the details'
+=======
+
+            elif not Question.objects.filter(semester=sem, exam=exam_type, subject=get_subject.id,
+                                             teacher=user.id, ).exists():
+
+                question_obj = Question()
+                question_obj.question_text = question
+                question_obj.subject = get_subject
+                question_obj.exam = exam_type
+                question_obj.teacher = user
+                question_obj.semester = sem
+                question_obj.question_no = 1
+
+                # adding choice Corrosponding with answer
+                question_obj.choice_text1 = choice_1
+                question_obj.choice_text2 = choice_2
+                question_obj.choice_text3 = choice_3
+                question_obj.choice_text4 = choice_4
+                question_obj.correct = correct_choice
+                question_obj.save()
+                msg = 'Next question'
+                color = 'success'
+
+                return render(request, 'add_question.html',
+                              {'question_no': 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
+                               'sem_list': sem_list})
+            else:
+                msg = 'All question done thank you'
+>>>>>>> First commit
                 color = 'danger'
                 return render(request, 'add_question.html',
                               {'question_no': 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
                                'sem_list': sem_list})
+<<<<<<< HEAD
+=======
+        except:
+            msg = 'Try to fill all the details'
+            color = 'danger'
+            return render(request, 'add_question.html',
+                          {'question_no': 1, 'total_questions': total_questions, 'msg': msg, 'color': color,
+                           'sem_list': sem_list})
+>>>>>>> First commit
 
     return render(request, 'add_question.html', {'question_no': 1, 'sem_list': sem_list})
 
@@ -481,8 +672,13 @@ def add_question_load_subject(request):
         dep = Staff.object.get(email=request.GET.get('email'))
         semester = request.GET.get('semester')
         if Subject.objects.filter(semester=semester, department=dep.department, teacher=dep.id):
+<<<<<<< HEAD
             subject = Subject.objects.filter(semester=semester, department=dep.department,teacher=dep.id)
             print(subject)
+=======
+            subject = Subject.objects.filter(semester=semester, department=dep.department, teacher=dep.id,
+                                             allocated=True)
+>>>>>>> First commit
             return render(request, 'subject_options.html', {'Subjects': subject})
         else:
             subject = {}

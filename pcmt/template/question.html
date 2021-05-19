@@ -29,7 +29,12 @@
 </head>
 
 
+<<<<<<< HEAD
 <div class="col-md-12  mt-3">
+=======
+<div class="col-md-9 mx-auto">
+    <div class="col-md-12  mt-3">
+>>>>>>> First commit
     <h3 class="text-left font-weight-bolder mb-3 text-dark"><strong>{{subject.department}}</strong></h3>
     <!--        bread crumb-->
     <div class="shadow-sm p-3 mb-3 bg-white rounded">
@@ -41,7 +46,21 @@
             <div class="row">
                 <p class="text-left "><strong class=" text-danger">Directions: </strong> Attain all Questions</p>
                 <div class="row ml-auto mr-5">
+<<<<<<< HEAD
             <div class="col-md-1"><form method="post">{%csrf_token%}<input type="number" name="allow" value="1" hidden><button type="submit" class="btn btn-secondary rounded btn-lg" >Allow Test</button></form> </div>
+=======
+            <div class="col-md-4">
+                <form method="post">{%csrf_token%}<input type="number" name="reset" value="1" hidden>
+                    <button type="submit" class="btn btn-secondary rounded btn-lg" >Reset Test</button>
+                </form>
+            </div>
+
+            <div class=" ml-5 col-md-4">
+                <form method="post">{%csrf_token%}<input type="number" name="allow" value="1" hidden>
+                    <button type="submit" class="btn btn-secondary rounded btn-lg" >Allow Test</button>
+                </form>
+            </div>
+>>>>>>> First commit
                 </div>
             </div>
             {%for question in questions%}
@@ -53,22 +72,37 @@
                 {%if question.correct == 1%}
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center text-danger">{{question.choice_text1}}</p>
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio1" id="blankRadio"
+                                   value="option1" aria-label="..."  >
+                        </div>
+                        <p class="text-center text-danger"><strong style="font-size: 18px;">{{question.choice_text1}}</strong></p>
+>>>>>>> First commit
                     </div>
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio2" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text2}}</p>
                     </div>
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio3" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text3}}</p>
@@ -76,7 +110,11 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio4" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text4}}</p>
@@ -84,7 +122,11 @@
                 {% elif question.correct == 2 %}
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio5" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center ">{{question.choice_text1}}</p>
@@ -92,6 +134,7 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
                                    value="option1" aria-label="...">
                         </div>
@@ -100,6 +143,16 @@
                     <div class="row ml-3">
                         <div class="form-check">
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio6" id="blankRadio1"
+                                   value="option1" aria-label="..."  >
+                        </div>
+                        <p class="text-center text-danger"><strong style="font-size: 18px;">{{question.choice_text2}}</strong></p>
+                    </div>
+                    <div class="row ml-3">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio7" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text3}}</p>
@@ -107,15 +160,25 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio8" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text4}}</p>
                     </div>
                 {% elif question.correct == 3 %}
+<<<<<<< HEAD
                     <div class="row ml-3">
                         <div class="form-check">
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                    <div class="row ml-3" >
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio9" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center ">{{question.choice_text1}}</p>
@@ -123,22 +186,37 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio10" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center text">{{question.choice_text2}}</p>
                     </div>
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center text-danger">{{question.choice_text3}}</p>
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio11" id="blankRadio1"
+                                   value="option1" aria-label="..."  >
+                        </div>
+                        <p class="text-center text-danger"><strong style="font-size: 18px;">{{question.choice_text3}}</strong></p>
+>>>>>>> First commit
                     </div>
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio12" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text4}}</p>
@@ -146,7 +224,11 @@
                 {% elif question.correct == 4 %}
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio13" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center ">{{question.choice_text1}}</p>
@@ -154,14 +236,22 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio14" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center ">{{question.choice_text2}}</p>
                     </div>
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio15" id="blankRadio1"
+>>>>>>> First commit
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center">{{question.choice_text3}}</p>
@@ -169,10 +259,17 @@
 
                     <div class="row ml-3">
                         <div class="form-check">
+<<<<<<< HEAD
                             <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1"
                                    value="option1" aria-label="...">
                         </div>
                         <p class="text-center text-danger">{{question.choice_text4}}</p>
+=======
+                            <input class="form-check-input position-static" type="radio" name="blankRadio16" id="blankRadio1"
+                                   value="option1" aria-label="..."  >
+                        </div>
+                        <p class="text-center text-danger"><strong style="font-size: 18px;">{{question.choice_text4}}</strong></p>
+>>>>>>> First commit
                     </div>
                 {%endif%}
 
@@ -187,6 +284,10 @@
 
 </div>
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> First commit
 
 {%endblock%}
 

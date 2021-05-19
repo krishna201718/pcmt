@@ -35,12 +35,17 @@
 <!-- Form Component -->
                         <div class="d-md-block d-none">
                             <form class="search-form" style="margin-top: -10px;" method="post">
+<<<<<<< HEAD
+=======
+                                {%csrf_token%}
+>>>>>>> First commit
                                 <div class="form-row">
 <!-- year-->
                                     <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
                                             <label for="department">Year</label>
                                             <select name="go_year" id="go_year" class="form-control">
                                                 <option></option>
+<<<<<<< HEAD
                                                 <option value="2015">2015</option>
                                                 <option value="2016">2016</option>
                                                 <option value="2017">2017</option>
@@ -51,6 +56,11 @@
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
+=======
+                                                {%for year in YEARS%}
+                                                <option value="{{year}}">{{year}}</option>
+                                                {%endfor%}
+>>>>>>> First commit
                                             </select><span class="pmd-textfield-focused"></span>
                                     </div>
 <!-- semster-->
@@ -197,7 +207,11 @@
                                 <td data-title="Date of Joining" style="display: none;">{{person.year}}</td>
                                 <td data-title="" style="display: block;">
                                     <a href="{%url 'college:profile' person.id %}" class="btn pmd-btn-fab pmd-btn-flat btn-primary pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">visibility</i></a>
+<<<<<<< HEAD
                                     <a href="employee-detail.html" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">edit</i></a>
+=======
+                                    <a href="#" class="btn pmd-btn-fab pmd-btn-flat btn-dark pmd-ripple-effect btn-sm mr-2"><i class="material-icons pmd-sm">edit</i></a>
+>>>>>>> First commit
                                     <a href="javascript:void(0);" title="Delete" class="btn pmd-btn-fab pmd-btn-flat btn-danger pmd-ripple-effect btn-sm" data-toggle="modal" data-target="#delete_employee_modal"><i class="material-icons pmd-sm">delete_outline</i></a>
                                 </td>
 

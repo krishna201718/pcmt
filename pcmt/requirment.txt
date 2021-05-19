@@ -1,5 +1,6 @@
 arabic-reshaper==2.1.1
 asgiref==3.2.9
+<<<<<<< HEAD
 cairocffi==1.2.0
 CairoSVG==2.5.1
 certifi==2020.4.5.2
@@ -9,10 +10,18 @@ cssselect2==0.4.1
 defusedxml==0.6.0
 Django==3.0.7
 django-crispy-forms==1.9.1
+=======
+certifi==2020.4.5.2
+colorama==0.4.4
+Django==3.0.7
+django-crispy-forms==1.9.1
+django-extensions==3.1.1
+>>>>>>> First commit
 future==0.18.2
 html5lib==1.1
 Pillow==7.1.2
 psycopg2==2.8.5
+<<<<<<< HEAD
 pycparser==2.20
 PyPDF2==1.26.0
 Pyphen==0.10.0
@@ -23,6 +32,15 @@ reportlab==3.5.60
 six==1.15.0
 sqlparse==0.3.1
 tinycss2==1.1.0
+=======
+PyPDF2==1.26.0
+python-bidi==0.4.2
+pytz==2020.1
+qrcode==6.1
+reportlab==3.5.63
+six==1.15.0
+sqlparse==0.3.1
+>>>>>>> First commit
 webencodings==0.5.1
 wincertstore==0.2
 xhtml2pdf==0.2.5

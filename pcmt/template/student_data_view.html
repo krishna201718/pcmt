@@ -57,6 +57,7 @@
                                             <label style="size: 3px">Year</label>
                                             <select name="go_year" name="go_year" class="form-control" >
                                                 <option></option>
+<<<<<<< HEAD
                                                 <option value="2015">2015</option>
                                                 <option value="2016">2016</option>
                                                 <option value="2017">2017</option>
@@ -68,6 +69,11 @@
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
 
+=======
+                                                {%for year in YEARS%}
+                                                <option value="{{year}}">{{year}}</option>
+                                                {%endfor%}
+>>>>>>> First commit
 
                                             </select>
 

@@ -27,7 +27,13 @@
 </head>
 
 
+<<<<<<< HEAD
 <div class="col-md-12  mt-3">
+=======
+
+<div class="col-md-9 mx-auto">
+    <div class="col-md-12  mt-3">
+>>>>>>> First commit
     <div><h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>View Report</strong></h1></div>
     <!--        bread crumb-->
     <div class="shadow-sm p-3 mb-5 bg-white rounded">
@@ -77,18 +83,22 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
     {%for ca in ca_test%}
     <div class="card mb-4">
 
+=======
+{%if semester <= current_semester %}
+    <div class="card mb-4">
         <div class="shadow-sm   rounded  col-md-12 ">
             <div class="row  pt-3 bg-white">
                 <div class="col-md-1">
                     <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle" alt="...">
                 </div>
                 <div class="col-md-5 ">
-                    <p class="font-weight-bolder"><strong> Continuous Assessment {{ca}} </strong></p>
-                    <p><strong>{{request.user.department}} {{semester}}</strong></p>
+                    <p class="font-weight-bolder"><strong> Continuous Assessment  </strong></p>
+                    <p><strong>{{request.session.department}} <strong style="color: red;">({{semester}}<sup>th</sup>)</strong></strong></p>
                 </div>
                 <div class="col-md-6">
                     <div class="row ">
@@ -98,7 +108,6 @@
                             <form method="post" action="{%url 'college:download_report'%}">
                                 {%csrf_token%}
                                 <input type="hidden" name="percentage" value="0">
-                                <input type="hidden" name="ca" value="{{ca}}">
                                 <input type="hidden" name="semester" value="{{semester}}">
                                 <button class="btn btn-secondary  btn-circle mx-auto">Download  Report</button>
                             </form>
@@ -115,11 +124,68 @@
 
         </div>
     </div>
+        {%else%}
+        {%for subject in subjects%}
+        {%if subject.teacher.id == staff_obj.id and subject.semester == semester%}
+            <div class="card mb-4">
+>>>>>>> First commit
+        <div class="shadow-sm   rounded  col-md-12 ">
+            <div class="row  pt-3 bg-white">
+                <div class="col-md-1">
+                    <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle" alt="...">
+                </div>
+                <div class="col-md-5 ">
+<<<<<<< HEAD
+                    <p class="font-weight-bolder"><strong> Continuous Assessment {{ca}} </strong></p>
+                    <p><strong>{{request.user.department}} {{semester}}</strong></p>
+=======
+                    <p class="font-weight-bolder"><strong> Continuous Assessment  </strong></p>
+                    <p><strong>{{subject.name}} <strong style="color: red;">({{semester}}<sup>th</sup>)</strong></strong></p>
+>>>>>>> First commit
+                </div>
+                <div class="col-md-6">
+                    <div class="row ">
+                        <div class=" col-md-12 text-secondary "><p class="text-center"><strong>
+                         <div class="col-md-6  bg-white rounded mt-2 ml-auto form-check form-check-inline">
+
+                            <form method="post" action="{%url 'college:download_report'%}">
+                                {%csrf_token%}
+                                <input type="hidden" name="percentage" value="0">
+<<<<<<< HEAD
+                                <input type="hidden" name="ca" value="{{ca}}">
+                                <input type="hidden" name="semester" value="{{semester}}">
+=======
+                                <input type="hidden" name="semester" value="{{semester}}">
+                                <input type="hidden" name="subject_id" value="{{subject.id}}">
+>>>>>>> First commit
+                                <button class="btn btn-secondary  btn-circle mx-auto">Download  Report</button>
+                            </form>
+
+                        </div>
+                        </strong></p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+<<<<<<< HEAD
     {%endfor%}
+=======
+        {%endif%}
+        {%endfor%}
+{%endif%}
+</div>
+>>>>>>> First commit
 </div>
 </div>
 
 
+<<<<<<< HEAD
 <script>
     function semester(num) {
 
@@ -127,6 +193,9 @@
 
 
 </script>
+=======
+
+>>>>>>> First commit
 
 {%endblock%}
 

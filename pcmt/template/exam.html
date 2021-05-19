@@ -25,9 +25,21 @@
     </style>
 </head>
 
+<<<<<<< HEAD
 
 <div class="col-md-12  mt-3">
     <div><h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>Take A Test</strong></h1></div>
+=======
+<div class="col-md-9 mx-auto">
+    <div class="col-md-12  mt-3 ">
+    <div>
+        {%if request.user.is_teacher%}
+        <h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>View Questions</strong></h1>
+        {%else%}
+        <h1 class="text-left font-weight-bolder mb-3 text-dark"><strong>Take A Test</strong></h1>
+        {%endif%}
+    </div>
+>>>>>>> First commit
     <!--        bread crumb-->
     <div class="shadow-sm p-3 mb-5 bg-white rounded">
         <h1 class="text-center font-weight-bolder text-secondary mb-5 mt-4">Continuous Assessment </h1>
@@ -45,7 +57,11 @@
     </div>
 
 
+<<<<<<< HEAD
     {%for subject in subjects%}
+=======
+    {%for exam_detail in exam_details%}
+>>>>>>> First commit
         <div class="card mb-4">
 
             <div class="shadow-sm   rounded  col-md-12 ">
@@ -54,6 +70,7 @@
                     <img src="https://source.unsplash.com/50x50/?nature,water" class="mr-3 rounded-circle" alt="...">
                 </div>
                 <div class="col-md-5 ">
+<<<<<<< HEAD
                     <p class="font-weight-bolder"> <strong> {{subject.name}} </strong></p>
                     <p>{{subject.department}} <strong> {{subject.subject_code}}</strong> </p>
                 </div>
@@ -63,6 +80,17 @@
                     </div>
                     <div class="row ">
                         <div class="col-md-12 text-danger text-center"> <p class="text-center "> 1 hour </p></div>
+=======
+                    <p class="font-weight-bolder"> <strong> {{exam_detail.subject.name}} </strong></p>
+                    <p>{{exam_detail.department}} <strong> {{exam_detail.subject.subject_code}}</strong> </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row ">
+                        <div class=" col-md-12 text-secondary "> <p class="text-left"> <strong>Total Time </strong></p></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 text-danger text-left"> <p class="text-left "> 1 hour </p></div>
+>>>>>>> First commit
                     </div>
 
 
@@ -74,6 +102,7 @@
                 <div class="col-md-12">
 
                     <div class="row  border">
+<<<<<<< HEAD
                         <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-left"> <strong>Total Question </strong>  <br> <p class="text-center">{{total_question | index:forloop.counter0 }} </p>  </p> </div>
                         <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-left"> <strong>Total Marks </strong> <br> 100 </p></div>
                         <div class="col-md-1 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-left"> <strong>Duration </strong><br> 3:00:00 </p></div>
@@ -113,6 +142,26 @@
                                 <a href="{%url 'college:question_view' subject.semester 2 subject.id 1 %}" class="btn btn-secondary  btn-circle ml-1" >Start  CA2</a>
                                 <a href="{%url 'college:question_view' subject.semester 3 subject.id 1 %}" class="btn btn-secondary  btn-circle ml-1" >Start  CA3</a>
                                 <a href="{%url 'college:question_view' subject.semester 4 subject.id 1 %}" class="btn btn-secondary  btn-circle ml-1" >Start  CA4</a>
+=======
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-center"> <strong>Total Question </strong>  <br> <p class="text-center">{{exam_detail.total_question}} </p>  </p> </div>
+
+
+                        <div class="col-md-2 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-center"> <strong>Total Marks </strong> <br> <p class="text-center">{{exam_detail.total_marks}}</p> </p></div>
+                        <div class="col-md-1 shadow-sm p-1  bg-white rounded mt-2 ml-1"><p class="ml-1 text-center"> <strong>Duration </strong><br> 1:00:00 </p></div>
+                        <div class="col-md-6 shadow-sm p-1  bg-white rounded mt-2 ml-auto form-check form-check-inline">
+                            {%if request.user.is_teacher %}
+                            <form method="post" action="{%url 'college:question' exam_detail.semester exam_detail.exam exam_detail.subject_id %}">
+                                {%csrf_token%}
+                                <input type="hidden" name="percentage" value="0">
+                                <input type="hidden" name="count_value" value="0">
+                                <button  class="btn btn-secondary  btn-circle ml-1" >View  CA{{exam_detail.exam}}</button>
+                            </form>
+
+                            {%else%}
+
+                                <a href="{%url 'college:question_view' exam_detail.semester exam_detail.exam exam_detail.subject_id 1 %}" class="btn btn-secondary  btn-circle ml-1" >Start  CA{{exam_detail.exam}}</a>
+
+>>>>>>> First commit
                             {%endif%}
                         </div>
                 </div>
@@ -129,6 +178,11 @@
     {%endfor%}
     </div>
     </div>
+<<<<<<< HEAD
+=======
+</div>
+
+>>>>>>> First commit
 
 
     <script>

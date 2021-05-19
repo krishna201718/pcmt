@@ -1,5 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
+<<<<<<< HEAD
 from .models import Account,Admission,Student
+=======
+from .models import Account, Admission, Student
+>>>>>>> First commit
 from django.db import IntegrityError
 from .decorator import allowed_users
 from django.contrib.auth.decorators import login_required
@@ -7,12 +11,24 @@ import datetime
 import secrets, random
 import string
 import datetime
+<<<<<<< HEAD
+=======
+
+year_s = datetime.datetime.today().year
+YEARS = list(range(year_s, year_s - 6, -1))
+
+
+>>>>>>> First commit
 def gen():
     N = 7
     res = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for i in range(N))
     res = 'PCMT' + str(datetime.datetime.today().year) + res
     return res
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> First commit
 @login_required(login_url='college:login')
 def studentsRegistration(request):
     if request.POST:
@@ -28,8 +44,14 @@ def studentsRegistration(request):
 
                 add_user.set_password(enrollment_no)
                 add_user.is_student = True
+<<<<<<< HEAD
                 add_user.save()
 
+=======
+                add_user.is_approved = True
+                add_user.save()
+                print('hello')
+>>>>>>> First commit
                 user = Student()
                 user.semester = request.POST.get('semester')
                 user.year = str(datetime.datetime.today().year)
@@ -81,7 +103,11 @@ def studentsRegistration(request):
                 if Student.objects.filter(email=request.session['student_email']).count():
                     msg = "Fill Entrance Examination field"
                     color = 'danger'
+<<<<<<< HEAD
                     print('hello',Student.objects.filter(email=request.session['student_email']).count)
+=======
+                    print('hello', Student.objects.filter(email=request.session['student_email']).count)
+>>>>>>> First commit
                     return render(request, 'registration.html', {'msg': msg, 'color': color})
                 else:
                     msg = "Try fill all the filed"
@@ -197,7 +223,11 @@ def studentsRegistration(request):
                 return render(request, 'registration.html', {'msg': msg, 'color': color})
         elif request.POST.get('loan'):
             try:
+<<<<<<< HEAD
                 user = Student.objects.get(email = request.session['student_email'])
+=======
+                user = Student.objects.get(email=request.session['student_email'])
+>>>>>>> First commit
                 user.loan = request.POST.get('loan')
                 user.gap = request.POST.get('gap')
                 user.reason = request.POST.get('reason')
@@ -211,12 +241,17 @@ def studentsRegistration(request):
                 color = 'danger'
                 return render(request, 'registration.html', {'msg': msg, 'color': color})
 
+<<<<<<< HEAD
     return render(request, 'registration.html',)
 
+=======
+    return render(request, 'registration.html', )
+>>>>>>> First commit
 
 
 @login_required(login_url='college:login')
 def student_data_view(request):
+<<<<<<< HEAD
     if request.POST:
         if request.POST.get('university_roll'):
             university_roll = request.POST.get('university_roll')
@@ -246,3 +281,30 @@ def student_data_view(request):
         user = Student.objects.filter( department=request.session['department'])
         return render(request, "student_data_view.html", context={'user': user})
     return render(request, "registration.html")
+=======
+    if request.POST and not request.user.is_student:
+        if request.POST.get('university_roll') and not request.user.is_student:
+            university_roll = request.POST.get('university_roll')
+            User = Student.objects.get(university_roll=university_roll)
+            return render(request, "student_data_view.html", context={'user': User, 'YEARS': YEARS})
+        else:
+            year = request.POST.get('go_year')
+            semester = request.POST.get('go_semester')
+            User = Student.objects.filter(semester=semester, year=year)
+            return render(request, "student_data_view.html", context={'user': User, 'YEARS': YEARS})
+    elif request.user.is_HOD:
+        user = {}
+        return render(request, "student_data_view.html", context={'user': user, 'YEARS': YEARS})
+    elif request.user.is_admin:
+        user = {}
+        return render(request, "student_data_view.html", context={'user': user, 'YEARS': YEARS})
+    elif request.user.is_student:
+        user = Student.objects.filter(email=request.session['email'])
+        return render(request, "student_data_view.html", context={'user': user, 'YEARS': YEARS})
+
+    elif request.user.is_BOC:
+        # user = Student.objects.filter(is_student=True, year=request.user.year, semester=request.user.semester)
+        user = {}
+        return render(request, "student_data_view.html", context={'user': user, 'YEARS': YEARS})
+    return render(request, "student_data_view.html", context={'YEARS': YEARS})
+>>>>>>> First commit

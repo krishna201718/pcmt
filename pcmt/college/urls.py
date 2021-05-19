@@ -10,6 +10,14 @@ urlpatterns = [
     # common view
     path('', views.index, name='index'),
 
+<<<<<<< HEAD
+=======
+    path('userForgotPassword', views.userForgotPassword, name="userForgotPassword"),
+    path('reset/<uidb64>/<token>/', views.reset, name="password_reset_confirm"),
+    path('reset_done', views.resetDone, name="reset_done"),
+
+
+>>>>>>> First commit
     path('admission_data', views.admission_data, name='admission_data'),
 
     path('home_student', views.home_student, name='home_student'),
@@ -17,7 +25,10 @@ urlpatterns = [
     path('home_general', views.home_general, name='home_general'),
     path('signup', views.signup, name='signup'),
     path('login', views.login, name='login'),
+<<<<<<< HEAD
     path('forgot_password', views.forgot_password, name='forgot_password'),
+=======
+>>>>>>> First commit
     path('logout', views.log_out, name='logout'),
     path('course', views.course, name='course'),
     path('contact', views.contact, name='contact'),
@@ -44,6 +55,10 @@ urlpatterns = [
 
     # staff
     path('create_staff', staff.create_staff, name='create_staff'),
+<<<<<<< HEAD
+=======
+    path('edit_staff', staff.edit_staff, name='edit_staff'),
+>>>>>>> First commit
     path('attendance_view', staff.attendance_view, name='attendance_view'),
     path('view_staff', staff.view_staff, name='view_staff'),
     path('attendance', staff.attendance, name='attendance'),

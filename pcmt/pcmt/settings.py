@@ -28,12 +28,20 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'college.Account'
+<<<<<<< HEAD
 
+=======
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+>>>>>>> First commit
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.RemoteUserBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> First commit
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'django_extensions',
+
+>>>>>>> First commit
 ]
 
 MIDDLEWARE = [

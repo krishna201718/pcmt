@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+{%load static%}
+>>>>>>> First commit
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +35,7 @@ text-align: center;
 <body>
 
 
+<<<<<<< HEAD
 <p style="font-size: 16px;  text-align: center;"><strong>Report Card</strong></p>
       <p style="font-size: 12px;"><strong>Email:</strong> {{user.email}}</p>
       <p style="font-size: 12px;"><strong>University Registration No.:</strong> {{user.registration_no}} <strong>year</strong> {{user.year}}</p>
@@ -45,20 +50,81 @@ text-align: center;
     <th>University Roll No</th>
       <th style="width: 10%;">Year</th>
     <th style="width: 10%;">Semester</th>
+=======
+<p style="font-size: 20px;  text-align: center;"><strong>Pailan College of Management and Technology</strong></p>
+<img  alt="Pcmt logo" src="../static/college/images/pcmt.png" width="100" height="100" style="text-align: center;"/>
+<h1 style="font-size: 20px;  text-align: center;text-decoration: underline;"><strong>PROVISIONAL GRADE CARD</strong></h1>
+{%if user.is_student%}
+<table id="customers" style="width: 100%">
+    <tr><th colspan="10" style="text-align: left;">CA Marks Details</th></tr>
+  <tr><th colspan="10">SEVENTH SEMESTER</th></tr>
+  <tr>
+    <th colspan="2">Paper Code(Unique Code) </th>
+    <th colspan="2">Paper name </th>
+    <th>CA 1</th>
+    <th> CA 2</th>
+    <th>CA 3</th>
+    <th>CA 4</th>
+    <th colspan="2">Teacher</th>
+
+>>>>>>> First commit
 
   </tr>
 
     {%for res in result%}
       <tr>
+<<<<<<< HEAD
           <td>{{forloop.counter0}}</td>
         <td>{{res.subject.name}} <strong></strong></td>
           <td>25</td>
           <td>{{res.marks}}</td>
 
+=======
+          <td colspan="2">{{res.subject.subject_code}}</td>
+        <td colspan="2">{{res.subject.name}} <strong></strong></td>
+          <td>{{res.ca1_marks}}</td>
+          <td>{{res.ca2_marks}}</td>
+          <td>{{res.ca3_marks}}</td>
+          <td>{{res.ca4_marks}}</td>
+        <td colspan="2">{{res.total_marks.teacher.email}}</td>
+>>>>>>> First commit
 
       </tr>
     {%endfor%}
 </table>
 
+<<<<<<< HEAD
+=======
+{%else%}
+<table id="customers" style="width: 100%">
+    <tr><th colspan="10" style="text-align: left;">{{subjects.name}} CA Marks Details</th></tr>
+  <tr><th colspan="10">SEVENTH SEMESTER</th></tr>
+  <tr>
+    <td>Sl No.</td>
+    <th colspan="5">Student Name </th>
+    <th>CA 1</th>
+    <th> CA 2</th>
+    <th>CA 3</th>
+    <th>CA 4</th>
+
+
+
+  </tr>
+
+    {%for res in result%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+          <td colspan="5">{{res.student.email}}</td>
+          <td>{{res.ca1_marks}}</td>
+          <td>{{res.ca2_marks}}</td>
+          <td>{{res.ca3_marks}}</td>
+          <td>{{res.ca4_marks}}</td>
+
+
+      </tr>
+    {%endfor%}
+</table>
+{%endif%}
+>>>>>>> First commit
 </body>
 </html>

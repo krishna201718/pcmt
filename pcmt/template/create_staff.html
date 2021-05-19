@@ -129,7 +129,11 @@
                             <select class="form-select" id="floatingSelectGrid"
                                     aria-label="Floating label select example" name="department">
                                 {%if request.user.is_authenticated and not request.user.is_admin %}
+<<<<<<< HEAD
                                 <option value="{{request.user.department}}" selected>{{request.user.department}}
+=======
+                                <option value="{{request.session.department}}" selected>{{request.session.department}}
+>>>>>>> First commit
                                 </option>
                                 {%else%}
                                 <option value="Computer Science and Engineering">Computer Science and Engineering
@@ -148,6 +152,10 @@
                     <!--faculty type-->
                     <div class="col-md-6">
                         <div class="form-floating form-control ml-auto mr-auto pb-5 pt-auto ">
+<<<<<<< HEAD
+=======
+                            {%if request.user.is_admin%}
+>>>>>>> First commit
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="hod">
                                 <label class="form-check-label" for="inlineCheckbox1">HOD</label>
@@ -164,6 +172,19 @@
                                 <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="staff">
                                 <label class="form-check-label" for="inlineCheckbox4">Staff</label>
                             </div>
+<<<<<<< HEAD
+=======
+                            {%elif request.user.is_HOD%}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="boc">
+                                    <label class="form-check-label" for="inlineCheckbox2">Batch Cordinator (BC)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="teacher">
+                                    <label class="form-check-label" for="inlineCheckbox3">Teacher</label>
+                                </div>
+                            {%endif%}
+>>>>>>> First commit
                         </div>
                     </div>
 

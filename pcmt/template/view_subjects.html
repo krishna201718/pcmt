@@ -32,6 +32,7 @@
                 <div class="col">
                     <!-- Form Component -->
                     <div class="d-md-block d-none">
+<<<<<<< HEAD
                         <form class="search-form" style="margin-top: -10px;">
                             <div class="form-row">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
@@ -43,11 +44,27 @@
                                         <option>2017</option>
                                         <option>2018</option>
                                         <option>2019</option>
+=======
+                        <form class="search-form" style="margin-top: -10px;" method="post">
+                            {%csrf_token%}
+                            <div class="form-row">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
+                                    <label for="department">Year</label>
+                                    <select name="go_year" id="department" class="form-control">
+                                        <option></option>
+                                        {%for year in YEARS%}
+                                        <option value="{{year}}">{{year}}</option>
+                                        {%endfor%}
+>>>>>>> First commit
                                     </select><span class="pmd-textfield-focused"></span>
                                 </div>
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label col-md-3 mb-0">
                                     <label>Semester</label>
+<<<<<<< HEAD
                                     <select name="select" id="designation" class="form-control">
+=======
+                                    <select name="go_semester" id="designation" class="form-control">
+>>>>>>> First commit
                                         <option></option>
                                         <option>1</option>
                                         <option>2</option>
